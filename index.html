@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+        h1 {
+          color: rgb(250, 250, 255);
+          font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-size: 300%;
+          margin: 0px
+        }
+        a:link, a:visited {
+  background-color: rgb(153, 33, 228);
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #43bd0b;
+}
+p{
+  color: aliceblue ;font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  background-color: rgb(153, 33, 228);border-radius: 5px;}
+   
+
+</style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business website</title>
+  </head>
+  <body  style="background-color:rgb(13, 12, 12);">
+    <h1 style="text-align:center;background-color:rgb(153, 33, 228);">COMMENTS</h1>
+
+    <nav style="text-align:center;background-color:rgb(153, 33, 228);">
+      
+      <a href="./Home.html">Home</a>
+      <a href="./About_me.html">About me</a>
+      <a href="./Contact_me.html">Contact Me</a>
+      <a href="./index.html">Comments</a>
+    </nav>
+    <h1><strong>Discussion Section</strong></h1>
+	<form>
+		<label style="color: aliceblue ;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" for="name">Name:</label>
+		<input type="text" id="name" name="name"><br>
+
+		<label style="color: aliceblue ;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" for="comment">Comment:</label><br>
+		<textarea id="comment" name="comment" rows="5" cols="40"></textarea><br>
+
+		<input style="font-family: cursive;" type="button" value="Submit" onclick="addComment()">
+	</form>
+
+	<div  id="comments"></div>
+
+	<script >
+		function addComment() {
+			var name = document.getElementById("name").value;
+			var comment = document.getElementById("comment").value;
+			var  date = new Date().toLocaleString();
+			var html = '<p><strong>' + name + '</strong> wrote on ' + date + ':<br>' + comment + '</p>';
+			document.getElementById("comments").innerHTML += html;
+			document.getElementById("name").value = "";
+			document.getElementById("comment").value = "";
+		}
+	</script>
+   
+  </body>
+</html>

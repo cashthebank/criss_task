@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h1 {
+            color: rgb(250, 250, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 300%;
+            margin: 0px
+        }
+
+        a:link,
+        a:visited {
+            background-color: rgb(153, 33, 228);
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover,
+        a:active {
+            background-color: #43bd0b;
+        }
+
+        p {
+            color: aliceblue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(153, 33, 228);
+            border-radius: 5px;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business website</title>
+</head>
+
+<body style="background-color:rgb(13, 12, 12);">
+    <h1 style="text-align:center;background-color:rgb(153, 33, 228);">COMMENTS</h1>
+
+    <nav style="text-align:center;background-color:rgb(153, 33, 228);">
+        <a href="{% url 'comments:home' %}"><button>Home</button></a>
+        <a href="{% url 'comments:about-me'%}"><button>About me</button></a>
+        <a href="{% url 'comments:contact-me'%}"><button>Contact me</button></a>
+        <a href="{% url 'comments:comments'%}"><button>Discussion</button></a>
+    </nav>
+    <h1><strong>Discussion Section</strong></h1>
+    <form method="POST">
+        {%csrf_token%}
+        <label
+            style="color: aliceblue ;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
+            for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label
+            style="color: aliceblue ;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
+            for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment" rows="5" cols="40"></textarea><br>
+
+        <input style="font-family: cursive;" type="submit" value="Submit">
+    </form>
+
+    <div id="comments">
+        {%for comment in comments%}
+        <p>
+            <strong>{{comment.name}}</strong> wrote on {{comment.created_at}}:<br>{{comment.comment}}
+        </p>
+        {%endfor%}
+    </div>
+</body>
+
+</html>
